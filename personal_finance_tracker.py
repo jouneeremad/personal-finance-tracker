@@ -1,6 +1,33 @@
 income_list = []
 expense_list = []
 
+# Load income data
+try:
+    with open("income.txt", "r") as file:
+        for line in file:
+            source, amount = line.strip().split(",")
+
+            income_list.append({
+                "source": source,
+                "amount": float(amount)
+            })
+except FileNotFoundError:
+    pass
+
+# Load expense data
+try:
+    with open("expenses.txt", "r") as file:
+        for line in file:
+            source, category, amount = line.strip().split(",")
+
+            expense_list.append({
+                "source": source,
+                "category": category,
+                "amount": float(amount)
+            })
+except FileNotFoundError:
+    pass
+
 while True:
     print("\n===== Personal Finance Tracker =====")
     print("1. Add Income")
@@ -23,6 +50,9 @@ while True:
 
         income_list.append(income)
 
+        with open("income.txt", "a") as file:
+            file.write(f"{source},{amount}\n")
+
         print("Income added successfully!")
 
     elif choice == "2":
@@ -36,7 +66,7 @@ while True:
 
     elif choice == "3":
         source = input("Expense Name: ")
-        category = input("Category (Food, Transport, Education, etc.): ")
+        category = input("Category: ")
         amount = float(input("Amount: "))
 
         expense = {
@@ -46,6 +76,9 @@ while True:
         }
 
         expense_list.append(expense)
+
+        with open("expenses.txt", "a") as file:
+            file.write(f"{source},{category},{amount}\n")
 
         print("Expense added successfully!")
 
@@ -63,14 +96,8 @@ while True:
                 )
 
     elif choice == "5":
-        total_income = 0
-        total_expenses = 0
-
-        for income in income_list:
-            total_income += income["amount"]
-
-        for expense in expense_list:
-            total_expenses += expense["amount"]
+        total_income = sum(income["amount"] for income in income_list)
+        total_expenses = sum(expense["amount"] for expense in expense_list)
 
         balance = total_income - total_expenses
 
