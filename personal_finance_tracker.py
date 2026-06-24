@@ -36,10 +36,12 @@ while True:
 
     elif choice == "3":
         source = input("Expense Name: ")
+        category = input("Category (Food, Transport, Education, etc.): ")
         amount = float(input("Amount: "))
 
         expense = {
             "source": source,
+            "category": category,
             "amount": amount
         }
 
@@ -54,7 +56,11 @@ while True:
             print("No expense records found.")
         else:
             for expense in expense_list:
-                print(f"- {expense['source']} - ${expense['amount']}")
+                print(
+                    f"- {expense['source']} | "
+                    f"{expense['category']} | "
+                    f"${expense['amount']}"
+                )
 
     elif choice == "5":
         total_income = 0
