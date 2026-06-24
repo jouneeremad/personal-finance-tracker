@@ -1,10 +1,13 @@
 income_list = []
+expense_list = []
 
 while True:
     print("\n===== Personal Finance Tracker =====")
     print("1. Add Income")
     print("2. View Income")
-    print("3. Exit")
+    print("3. Add Expense")
+    print("4. View Expenses")
+    print("5. Exit")
 
     choice = input("Choose an option: ")
 
@@ -28,6 +31,25 @@ while True:
                 print("-", income)
 
     elif choice == "3":
+        source = input("Expense Name: ")
+        amount = float(input("Amount: "))
+
+        expense = f"{source} - ${amount}"
+
+        expense_list.append(expense)
+
+        print("Expense added successfully!")
+
+    elif choice == "4":
+        print("\nExpense Records:")
+
+        if not expense_list:
+            print("No expense records found.")
+        else:
+            for expense in expense_list:
+                print("-", expense)
+
+    elif choice == "5":
         print("Goodbye!")
         break
 
