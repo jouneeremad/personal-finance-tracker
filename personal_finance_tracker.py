@@ -7,7 +7,8 @@ while True:
     print("2. View Income")
     print("3. Add Expense")
     print("4. View Expenses")
-    print("5. Exit")
+    print("5. Calculate Balance")
+    print("6. Exit")
 
     choice = input("Choose an option: ")
 
@@ -15,7 +16,10 @@ while True:
         source = input("Income Source: ")
         amount = float(input("Amount: "))
 
-        income = f"{source} - ${amount}"
+        income = {
+            "source": source,
+            "amount": amount
+        }
 
         income_list.append(income)
 
@@ -28,13 +32,16 @@ while True:
             print("No income records found.")
         else:
             for income in income_list:
-                print("-", income)
+                print(f"- {income['source']} - ${income['amount']}")
 
     elif choice == "3":
         source = input("Expense Name: ")
         amount = float(input("Amount: "))
 
-        expense = f"{source} - ${amount}"
+        expense = {
+            "source": source,
+            "amount": amount
+        }
 
         expense_list.append(expense)
 
@@ -47,9 +54,26 @@ while True:
             print("No expense records found.")
         else:
             for expense in expense_list:
-                print("-", expense)
+                print(f"- {expense['source']} - ${expense['amount']}")
 
     elif choice == "5":
+        total_income = 0
+        total_expenses = 0
+
+        for income in income_list:
+            total_income += income["amount"]
+
+        for expense in expense_list:
+            total_expenses += expense["amount"]
+
+        balance = total_income - total_expenses
+
+        print("\n===== Financial Summary =====")
+        print(f"Total Income: ${total_income}")
+        print(f"Total Expenses: ${total_expenses}")
+        print(f"Balance: ${balance}")
+
+    elif choice == "6":
         print("Goodbye!")
         break
 
