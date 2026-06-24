@@ -8,6 +8,8 @@ A Python application that helps users track income, expenses, and personal finan
 - Add expenses
 - View transactions
 - Calculate balance
+- Expense categories
+- Save financial data automatically
 
 ## Technologies Used
 
@@ -16,10 +18,11 @@ A Python application that helps users track income, expenses, and personal finan
 
 ## Future Improvements
 
-- Categories
 - Monthly reports
 - Charts and graphs
 - Budget planning
+- Expense analytics
+- Export reports
 
 ## Author
 
