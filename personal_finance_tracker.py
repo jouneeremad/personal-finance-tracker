@@ -1,7 +1,7 @@
 income_list = []
 expense_list = []
 
-# Load income data
+# Load income data 
 try:
     with open("income.txt", "r") as file:
         for line in file:
