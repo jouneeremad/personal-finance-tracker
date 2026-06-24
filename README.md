@@ -26,4 +26,4 @@ A Python application that helps users track income, expenses, and personal finan
 
 ## Author
 
-Jouneer Emad
+Jouneer Emad 
